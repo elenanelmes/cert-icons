@@ -1,64 +1,89 @@
-::before,
-::after {
+* {
+  box-sizing: content-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+*::before,
+*::after {
   content: "";
   position: absolute;
 }
-.paper {
-  align-items: center;
-  background: #fff;
-  border: 2px solid #000;
-  border-radius: 2px;
-  display: flex;
-  margin: 0 auto;
-  position: relative;
-}
-body {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-}
-.wrapper {
-  background: whitesmoke;
+.circle {
+  background: #d3e3f7;
   border-radius: 50%;
   display: flex;
   align-items: center;
-  height: 90px;
-  width: 90px;
+  min-height: 80px;
+  min-width: 80px;
+  z-index: 0;
 }
-.single {
+.circle:nth-of-type(1),
+.circle:nth-of-type(2) {
+  margin-right: 3vw;
+}
+.single,
+.multi,
+.wildcard {
   align-items: center;
   background: #fff;
-  border: 2px solid #000;
-  border-radius: 2px;
+  border: 1px solid #000;
   display: flex;
+  justify-content: center;
+  height: 30px;
   margin: 0 auto;
   position: relative;
-  width: 45px;
-  height: 33px;
+  width: 44px;
+}
+.multi {
+  top: 4px;
+}
+.multi::before,
+.multi::after {
+  background: #fff;
+  border: 1px solid #000;
+  height: 30px;
+  width: 44px;
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+}
+.multi::before {
+  right: -4px;
+  top: -4px;
+  z-index: -1;
+}
+.multi::after {
+  left: -4px;
+  top: -7px;
+  z-index: -2;
 }
 .text {
-  background-image: repeating-linear-gradient(180deg, #fff, #fff 2px, #000 2px, #000 4px);
+  background-image: linear-gradient(to bottom, #000, #000 2px, #fff 2px, #fff 4px, #000 4px, #000 6px, #fff 6px, #fff 8px, #000 8px, #000 10px, #fff 10px, #fff 12px, #000 12px, #000 14px, #fff 14px, #fff 16px, #000 16px, #000 18px);
   display: flex;
   flex-direction: row-reverse;
-  height: 17px;
+  height: 18px;
   margin: 0 auto;
   position: relative;
-  width: 33px;
+  width: 32px;
 }
 .seal {
-  background-image: repeating-radial-gradient(circle, dodgerblue 0px, dodgerblue 3px, #fff 3px, #fff 4px, dodgerblue 4px, dodgerblue 6px);
+  background-image: radial-gradient(circle, #4a90e2, #4a90e2 3px, #fff 3px, #fff 4px, #4a90e2 4px, #4a90e2 6px);
   border: 2px solid #fff;
   border-radius: 50%;
   height: 12px;
   left: 26px;
   position: absolute;
-  top: 16px;
+  top: 12px;
   width: 12px;
   z-index: 10;
 }
 .seal::before {
-  background: dodgerblue;
+  background: #4a90e2;
   height: 12px;
   left: 2px;
   top: 10px;
@@ -71,5 +96,17 @@ body {
   left: 1px;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-bottom: 5px solid whitesmoke;
+  border-bottom: 5px solid #d3e3f7;
+}
+.asterisk {
+  border: 1px solid #fff;
+  background: #fff;
+  display: flex;
+  font-size: 8px;
+  height: 9px;
+  left: 6px;
+  padding-top: 1px;
+  position: absolute;
+  top: 5px;
+  width: 10px;
 }
